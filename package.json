@@ -24,7 +24,8 @@
   "devDependencies": {
     "aegir": "^6.0.1",
     "chai": "^3.5.0",
-    "interface-pull-blob-store": "^0.2.0"
+    "interface-pull-blob-store": "^0.3.0",
+    "rimraf": "^2.5.4"
   },
   "dependencies": {
     "mkdirp": "^0.5.1",
@@ -38,5 +39,9 @@
   "homepage": "https://github.com/ipfs/js-fs-pull-blob-store",
   "contributors": [
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipfs/js-ipfs.git"
+  }
 }

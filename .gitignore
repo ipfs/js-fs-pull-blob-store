@@ -35,5 +35,3 @@ node_modules
 # Dignified.js builds
 dist
 lib
-
-tmp

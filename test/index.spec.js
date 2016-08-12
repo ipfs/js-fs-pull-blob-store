@@ -1,15 +1,18 @@
 'use strict'
 
 const testSuite = require('interface-pull-blob-store')
-const fs = require('fs')
+const path = require('path')
+const os = require('os')
+const rimraf = require('rimraf')
 
 const FsBlobStore = require('../src')
 
 testSuite({
   setup (cb) {
-    cb(null, new FsBlobStore('./tmp'))
+    const p = path.join(os.tmpdir(), String(process.pid))
+    cb(null, new FsBlobStore(p))
   },
   teardown (store, cb) {
-    fs.unlink('./tmp', cb)
+    rimraf(store.path, cb)
   }
 })

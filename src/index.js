@@ -15,18 +15,20 @@ module.exports = class FsBlobStore {
   write (key, cb) {
     cb = cb || (() => {})
 
-    const deferred = defer()
     const filename = join(this.path, key)
+
+    const d = defer()
+
     mkdirp(path.dirname(filename), (err) => {
       if (err) {
-        deferred.abort(err)
+        d.abort(err)
         return cb(err)
       }
 
-      deferred.resolve(write(filename, cb))
+      d.resolve(write(filename, cb))
     })
 
-    return deferred
+    return d
   }
 
   read (key) {
@@ -57,7 +59,7 @@ module.exports = class FsBlobStore {
 
 function join (root, dir) {
   return path.join(
-    root,
+    path.resolve(root),
     path.resolve('/', dir).replace(/^[a-zA-Z]:/, '')
   )
 }
