@@ -6,6 +6,7 @@ const read = require('pull-file')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
 const defer = require('pull-defer/sink')
+const pull = require('pull-stream')
 
 module.exports = class FsBlobStore {
   constructor (dirname) {
@@ -15,13 +16,16 @@ module.exports = class FsBlobStore {
   write (key, cb) {
     cb = cb || (() => {})
 
-    const filename = join(this.path, key)
-
     const d = defer()
 
+    if (!key) {
+      cb(new Error('Missing key'))
+      return d
+    }
+
+    const filename = join(this.path, key)
     mkdirp(path.dirname(filename), (err) => {
       if (err) {
-        d.abort(err)
         return cb(err)
       }
 
@@ -32,11 +36,19 @@ module.exports = class FsBlobStore {
   }
 
   read (key) {
+    if (!key) {
+      return pull.error(new Error('Missing key'))
+    }
+
     return read(join(this.path, key))
   }
 
   exists (key, cb) {
     cb = cb || (() => {})
+
+    if (!key) {
+      return cb(new Error('Missing key'))
+    }
 
     fs.stat(join(this.path, key), (err, stat) => {
       if (err && err.code !== 'ENOENT') {
@@ -48,6 +60,11 @@ module.exports = class FsBlobStore {
 
   remove (key, cb) {
     cb = cb || (() => {})
+
+    if (!key) {
+      return cb(new Error('Missing key'))
+    }
+
     fs.unlink(join(this.path, key), (err) => {
       if (err && err.code !== 'ENOENT') {
         return cb(err)
