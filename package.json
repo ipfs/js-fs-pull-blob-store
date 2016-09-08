@@ -30,7 +30,7 @@
   "dependencies": {
     "mkdirp": "^0.5.1",
     "pull-defer": "^0.2.2",
-    "pull-file": "^0.5.0",
+    "pull-file": "^1.0.0",
     "pull-stream": "^3.4.3",
     "pull-write-file": "^0.2.1"
   },
