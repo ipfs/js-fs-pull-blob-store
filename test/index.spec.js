@@ -1,6 +1,6 @@
 'use strict'
 
-const testSuite = require('interface-pull-blob-store')
+const testSuite = require('interface-pull-blob-store/lib/tests')
 const path = require('path')
 const os = require('os')
 const rimraf = require('rimraf')
