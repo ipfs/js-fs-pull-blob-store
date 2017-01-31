@@ -15,3 +15,7 @@
 ```bash
 $ npm install fs-pull-blob-store
 ```
+
+## License
+
+MIT
