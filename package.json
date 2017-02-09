@@ -1,6 +1,6 @@
 {
   "name": "fs-pull-blob-store",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Test suite for pull-blob-stores",
   "main": "src/index.js",
   "scripts": {
