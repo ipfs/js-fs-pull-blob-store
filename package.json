@@ -20,9 +20,9 @@
   "author": "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "aegir": "^9.4.0",
+    "aegir": "^10.0.0",
     "chai": "^3.5.0",
-    "interface-pull-blob-store": "^0.6.0",
+    "interface-pull-blob-store": "~0.6.0",
     "rimraf": "^2.5.4"
   },
   "dependencies": {
