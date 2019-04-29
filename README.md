@@ -10,6 +10,10 @@
 
 > [pull-blob-store](https://github.com/ipfs/interface-pull-blob-store) implementation for the filesystem in node.js
 
+## Lead Maintainer
+
+[Alex Potsides](https://github.com/achingbrain)
+
 ## Installation
 
 ```bash
